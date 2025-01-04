@@ -37,7 +37,7 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-leaflet": "^4.2.1",
-    "react-share": "^5.1.0",
+    "react-share": "^5.1.2",
     "react-world-flags": "^1.6.0",
     "recharts": "^2.12.7",
     "stripe": "^15.8.0",

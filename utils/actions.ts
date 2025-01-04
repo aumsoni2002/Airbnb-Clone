@@ -271,3 +271,14 @@ export const fetchFavorites = async () => {
     return favorite.property;
   });
 };
+
+export const fetchPropertyDetails = (id: string) => {
+  return db.property.findUnique({
+    where: {
+      id: id,
+    },
+    include: {
+      profile: true,
+    },
+  });
+};
