@@ -12,7 +12,7 @@ function ImageContainer({
       <Image
         src={mainImage}
         fill
-        sizes="100vw"
+        sizes="100vw" 
         alt={name}
         className="object-cover rounded"
         priority
