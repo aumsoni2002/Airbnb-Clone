@@ -9,7 +9,7 @@ function CountryFlagAndName({ countryCode }: { countryCode: string }) {
       : validCountry!.name;
 
   return (
-    <span className="flex justify-between items-center gap-2 text-sm ">
+    <span className="flex items-center gap-2 text-sm">
       <Flag code={countryCode} style={{ width: 20, height: 20 }} />
       {countryName}
     </span>
