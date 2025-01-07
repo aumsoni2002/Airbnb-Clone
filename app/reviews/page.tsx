@@ -23,11 +23,23 @@ async function ReviewsPage() {
           const { name, image } = review.property;
           const reviewInfo = { comment, rating, name, image };
           return (
-            <ReviewCard key={review.id} reviewInfo={reviewInfo}></ReviewCard>
+            <ReviewCard key={review.id} reviewInfo={reviewInfo}>
+              <DeleteReview reviewId={review.id} />
+            </ReviewCard>
           );
         })}
       </section>
     </>
   );
 }
+
+const DeleteReview = ({ reviewId }: { reviewId: string }) => {
+  const deleteReview = deleteReviewAction.bind(null, { reviewId });
+  return (
+    <FormContainer action={deleteReview}>
+      <IconButton actionType="delete" />
+    </FormContainer>
+  );
+};
+
 export default ReviewsPage;
