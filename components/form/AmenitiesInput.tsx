@@ -4,10 +4,14 @@ import { amenities, Amenity } from "@/utils/amenities";
 import { Checkbox } from "@/components/ui/checkbox";
 
 function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
+  const amenitiesWithIcons = defaultValue?.map(({ name, selected }) => ({
+    name,
+    selected,
+    icon: amenities.find((amenity) => amenity.name === name)!.icon,
+  }));
   const [selectedAmenities, setSelectedAmenities] = useState<Amenity[]>(
-    defaultValue || amenities
+    amenitiesWithIcons || amenities
   );
-
   const handleChange = (amenity: Amenity) => {
     setSelectedAmenities((prev) => {
       return prev.map((a) => {
@@ -26,7 +30,6 @@ function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
         name="amenities"
         value={JSON.stringify(selectedAmenities)}
       />
-
       <div className="grid grid-cols-2 gap-4">
         {selectedAmenities.map((amenity) => {
           return (
@@ -36,7 +39,6 @@ function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
                 checked={amenity.selected}
                 onCheckedChange={() => handleChange(amenity)}
               />
-
               <label
                 htmlFor={amenity.name}
                 className="text-sm font-medium leading-none capitalize flex gap-x-2 items-center"
@@ -50,5 +52,4 @@ function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
     </section>
   );
 }
-
 export default AmenitiesInput;
